@@ -48,8 +48,10 @@ class MainActivity : AppCompatActivity() {
 
                 db.itemDao().insertItem(item)
                 items.clear()
-                items = db.itemDao().getAllItems().toMutableList()
 
+               // items = db.itemDao().getAllItems().toMutableList()
+                val newlist = db.itemDao().getAllItems().toMutableList()
+                items.addAll(newlist)
                 Log.i("aaaaaaaa", items.toString())
 
             }

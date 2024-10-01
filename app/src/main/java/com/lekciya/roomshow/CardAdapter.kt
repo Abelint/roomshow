@@ -1,6 +1,7 @@
 package com.lekciya.roomshow
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -21,9 +22,8 @@ class CardAdapter(private val context: Context, private val list: List<Item>) : 
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var view = convertView
 
-        view = View.inflate(context,R.layout.card, parent)
+        val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.card, parent, false)
 
         val tv1 = view.findViewById<TextView>(R.id.textView)
         val tv2 = view.findViewById<TextView>(R.id.textView2)
