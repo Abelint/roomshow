@@ -13,6 +13,7 @@ import com.lekciya.roomshow.database.MainDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     lateinit var items : MutableList<Item>
@@ -53,9 +54,12 @@ class MainActivity : AppCompatActivity() {
                 val newlist = db.itemDao().getAllItems().toMutableList()
                 items.addAll(newlist)
                 Log.i("aaaaaaaa", items.toString())
+                withContext(Dispatchers.Main){
+                    adapter.notifyDataSetChanged()
+                }
 
             }
-            adapter.notifyDataSetChanged()
+
         }
     }
 }
